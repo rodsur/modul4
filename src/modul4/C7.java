@@ -93,6 +93,18 @@ public class C7 {
                         liveCells++;
                         }
                     }
+                    
+                    //Regler
+                    if (currentScreen[y][x] == 1) {
+                        if (liveCells < 2 || liveCells > 3) {
+                            currentBuffer[y][x] = 0;
+                        } else {
+                            currentBuffer[y][x] = 1;
+                        }
+                    } else if (currentScreen[y][x] == 0 && liveCells == 3){
+                        currentBuffer[y][x] = 1;
+                    }
+
                 }
             }
             
