@@ -50,10 +50,11 @@ public class C7 {
                 + screen1[0].length + " bred");
         
         for (turn=0; turn<1; turn++) {
+            //Vælg hvilket array der er skal vises og hvilket der er buffer
             int[][] currentScreen = (turn%2==0 ? screen1 : screen2);
             int[][] currentBuffer = (turn%2==1 ? screen1 : screen2);
             
-            //print den nuværende skærm
+            //print det nuværende array
             for (int y = 0; y<currentScreen.length; y++){
                 for (int x = 0; x<currentScreen[y].length; x++){
                     System.out.print(currentScreen[y][x]);
@@ -61,13 +62,35 @@ public class C7 {
                 System.out.println("");
             }
             
-            //Arbejd med den stadiet fra skærmen og gem i bufferen
+            //Arbejd med det nuværende stadie og gem ændringer i bufferen
             for (int y = 0; y<currentScreen.length; y++){
+                //System.out.println(currentScreen[y].length);
                 for (int x = 0; x<currentScreen[y].length; x++){
                     liveCells = 0;
-                    if (currentScreen[y][x] == 0) {
-                        if (currentScreen[y-1][x-1] == 1) {
+                    //System.out.printf("x: %d y: %d\n",x,y);
+                    //System.out.println("Denne celle er: " + currentScreen[y][x]);
+                    //Check de omkring liggende celler
+                    if (y != 0) {
+                        if (currentScreen[y-1][x] == 1) {
                             liveCells++;
+                        }   
+                    }
+                    
+                    if (y != currentScreen.length - 1) {
+                        if (currentScreen[y+1][x] == 1 ) {
+                            liveCells++;    
+                        }
+                    }
+                    
+                    if (x != 0) {
+                        if (currentScreen[y][x-1] == 1) {
+                            liveCells++;
+                        }
+                    }
+                    
+                    if (x != currentScreen[y].length - 1) {
+                        if (currentScreen[y][x+1] == 1) {
+                        liveCells++;
                         }
                     }
                 }
