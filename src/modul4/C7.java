@@ -49,12 +49,20 @@ public class C7 {
         System.out.println("brættet er " + screen1.length + " høj og "
                 + screen1[0].length + " bred");
         
-        for (turn=0; turn<1; turn++) {
+        for (turn=0; turn<100; turn++) {
             //Vælg hvilket array der er skal vises og hvilket der er buffer
             int[][] currentScreen = (turn%2==0 ? screen1 : screen2);
             int[][] currentBuffer = (turn%2==1 ? screen1 : screen2);
             
+            //fyld buffer med 0er
+            for (int y = 0; y<currentBuffer.length; y++){
+                for (int x = 0; x<currentBuffer[y].length; x++){
+                    currentBuffer[y][x] = 0;
+                }
+            }
+            
             //print det nuværende array
+            System.out.println("generation " + turn + "---------------------");
             for (int y = 0; y<currentScreen.length; y++){
                 for (int x = 0; x<currentScreen[y].length; x++){
                     System.out.print(currentScreen[y][x]);
@@ -73,12 +81,32 @@ public class C7 {
                     if (y != 0) {
                         if (currentScreen[y-1][x] == 1) {
                             liveCells++;
-                        }   
+                        }
+                        if (x != 0) {
+                            if (currentScreen[y-1][x-1] == 1) {
+                                liveCells++;
+                            }
+                        }
+                        if (x != currentScreen[y].length - 1) {
+                            if (currentScreen[y-1][x+1] == 1) {
+                                liveCells++;
+                            }
+                        }
                     }
                     
                     if (y != currentScreen.length - 1) {
-                        if (currentScreen[y+1][x] == 1 ) {
+                        if (currentScreen[y+1][x] == 1) {
                             liveCells++;    
+                        }
+                        if (x != 0) {
+                            if (currentScreen[y+1][x-1] == 1) {
+                                liveCells++;
+                            }
+                        }
+                        if (x != currentScreen[y].length - 1) {
+                            if (currentScreen[y+1][x+1] == 1) {
+                                liveCells++;
+                            }
                         }
                     }
                     
@@ -107,9 +135,10 @@ public class C7 {
 
                 }
             }
-            
-        System.out.println("---------------------------------");
+        //pause loop
+        for (long i=0 ; i<1000000000 ; i++) {}
         }
+        System.out.println("Done");
     }
     
 }
