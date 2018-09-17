@@ -20,15 +20,15 @@ public class liang7_3 {
 
         int count;
 
-        for (int tilTilCheck = 1; tilTilCheck<10;tilTilCheck++) {
+        for (int talTilCheck = 1; talTilCheck<10;talTilCheck++) {
             count = 0;
             for (int i = 0; i<talArray.length;i++) {
-                if (talArray[i] == tilTilCheck) {
+                if (talArray[i] == talTilCheck) {
                     count++;
                 }
             }
             if (count > 0) {
-                System.out.println("talet " + i + " er tilstede " + count + " gange");
+                System.out.println("talet " + talTilCheck + " er tilstede " + count + " gange");
             }
         }
     }
