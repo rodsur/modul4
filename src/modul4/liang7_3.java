@@ -20,10 +20,10 @@ public class liang7_3 {
 
         int count;
 
-        for (int i = 1; i<10;i++) {
+        for (int tilTilCheck = 1; tilTilCheck<10;tilTilCheck++) {
             count = 0;
-            for (int i2 = 0; i2<talArray.length;i2++) {
-                if (talArray[i2] == i) {
+            for (int i = 0; i<talArray.length;i++) {
+                if (talArray[i] == tilTilCheck) {
                     count++;
                 }
             }
